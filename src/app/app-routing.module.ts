@@ -7,6 +7,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ListtasktrackerComponent } from './listtasktracker/listtasktracker.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RouteGuardService } from './service/route-guard.service';
+import { TaskComponent } from './task/task.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path : 'login', component:LoginComponent},
   {path : 'home/:username', component:HomepageComponent, canActivate:[RouteGuardService]},
   {path : 'tasks', component : ListtasktrackerComponent,canActivate:[RouteGuardService]},
+  {path : 'tasks/:id', component : TaskComponent,canActivate:[RouteGuardService]},
   {path : 'logout', component : LogoutComponent,canActivate:[RouteGuardService]},
   {path : '**', component:ErrorComponent}
 ];

@@ -1,0 +1,3 @@
+.ng-touched:not(form){
+    border-bottom: 5px solid red;
+}

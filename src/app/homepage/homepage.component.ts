@@ -10,7 +10,8 @@ import { HomePageDataService } from '../service/data/home-page-data.service';
 export class HomepageComponent implements OnInit {
 
   username = ''
-
+  welcomeMessageFromService:String
+  errorMessage :String
   constructor(private router : ActivatedRoute, private service:HomePageDataService) { }
 
   ngOnInit(): void {
@@ -18,6 +19,23 @@ export class HomepageComponent implements OnInit {
   }
 
   getMessage(){
-    console.log(this.service.executeHelloWorldBeanService())
+    this.service.executeHelloWorldBeanService().subscribe(
+      response => this.handleSuccesfulResponse(response),
+      error => this.handleErrorResponse(error)
+    );
+  }
+
+  getMessageWithParameter(){
+    this.service.executeHelloWorldBeanServiceWithParam(this.username).subscribe(
+      response => this.handleSuccesfulResponse(response)
+    )
+  }
+
+  handleSuccesfulResponse(response){
+    this.welcomeMessageFromService=response.message;
+  }
+
+  handleErrorResponse(error){
+    this.errorMessage = error.error.message
   }
 }

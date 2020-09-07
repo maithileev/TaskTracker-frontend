@@ -1,5 +1,7 @@
 <h2> My Tasks </h2>
-
+<div class="alert alert-success" *ngIf = "message">
+    {{message}}
+</div>
 <div class="container">
     <table class="table">
     <thead>
@@ -15,6 +17,12 @@
             </th>
             <th>
                 Completion Date
+            </th>
+            <th>
+                Update
+            </th>
+            <th>
+                Delete
             </th>
         </tr>
     </thead>
@@ -32,8 +40,16 @@
             <td>
                 {{task.targetDate | date}}
             </td>
+            <td>
+                <button (click) = "updateTask(task.id)" class="btn btn-warning"> Update</button>
+            </td>
+            <td>
+                <button (click) = "deleteTask(task.id)" class="btn btn-danger">Delete</button>
+            </td>
         </tr>
     </tbody>
 
 </table>
+
+<button (click) = "addTask()" class="btn btn-success">Add</button>
 </div>

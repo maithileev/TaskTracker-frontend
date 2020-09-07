@@ -1,0 +1,45 @@
+
+<h2> Task </h2>
+<div class="container">
+
+    <div class="alert alert-warning" *ngIf="description.touched && taskForm.invalid">Enter valid description</div>
+    <!-- do this for all -->
+    
+    <form (ngSubmit)="!taskForm.invalid && saveTask()" #taskForm="ngForm">
+    <table class = "table">
+        <tr>
+            <td>
+                Description : 
+            </td>
+            <td>
+                <input type="text" [(ngModel)] = "task.description" class="form-control" name = "description" required = "required" #description = "ngModel">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Status : 
+            </td>
+            <td>
+                <input type="text"  [(ngModel)] = "task.status" class="form-control" name = "status" required = "required" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Priority : 
+            </td>
+            <td>
+                <input type="text" [(ngModel)] = "task.priority" class="form-control" name = "priority" required = "required" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                TargetDate :
+            </td>
+            <td>
+                <input type="date" [ngModel] = "task.targetDate | date:'yyyy-MM-dd'" (ngModelChange) = "task.targetDate = $event" class="form-control" name = "targetDate" required = "required" >
+            </td>
+        </tr>
+    </table>
+    <button  type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>

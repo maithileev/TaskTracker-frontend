@@ -13,7 +13,9 @@ import { ErrorComponent } from './error/error.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ListtasktrackerComponent } from './listtasktracker/listtasktracker.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TaskComponent } from './task/task.component';
+import { HttpIntercepterBasicAuthService } from './service/http/http-intercepter-basic-auth.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     ErrorComponent,
     HomepageComponent,
     ListtasktrackerComponent,
-    LogoutComponent
+    LogoutComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide : HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

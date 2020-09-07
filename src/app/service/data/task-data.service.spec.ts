@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HomePageDataService } from './home-page-data.service';
+import { TaskDataService } from './task-data.service';
 
-describe('HomePageDataService', () => {
-  let service: HomePageDataService;
+describe('TaskDataService', () => {
+  let service: TaskDataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HomePageDataService);
+    service = TestBed.inject(TaskDataService);
   });
 
   it('should be created', () => {

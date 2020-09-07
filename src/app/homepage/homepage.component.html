@@ -7,5 +7,16 @@ You can view your tasks <a routerLink="/tasks">Here</a>
 
 <div class="container">
 Click here to get a customised welcome message
-<button (click)="getMessage()" class = "btn btn-success">Get welcome message</button>
+<button (click)="getMessageWithParameter()" class = "btn btn-success">Get welcome message</button>
+</div>
+
+
+<div class="container" *ngIf="welcomeMessageFromService">
+    <h3> Here is your customised message </h3>
+    {{welcomeMessageFromService}}
+</div>
+
+<div class="container" *ngIf="errorMessage">
+    <h3> Here is your customised message </h3>
+    {{errorMessage}}
 </div>
